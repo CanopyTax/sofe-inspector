@@ -1,0 +1,31 @@
+{
+  "name": "sofe-inspector",
+  "version": "1.0.0",
+  "description": "An extension for the Chrome Developer Tools for managing sofe services",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+		"build": "node rollup.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CanopyTax/sofe-inspector.git"
+  },
+  "author": "Bret Little",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CanopyTax/sofe-inspector/issues"
+  },
+  "homepage": "https://github.com/CanopyTax/sofe-inspector#readme",
+  "dependencies": {
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7"
+  },
+  "devDependencies": {
+    "rollup": "^0.25.4",
+    "rollup-plugin-babel": "^2.3.9",
+    "rollup-plugin-commonjs": "^2.2.1",
+    "rollup-plugin-node-resolve": "^1.4.0",
+    "rollup-plugin-replace": "^1.1.0"
+  }
+}
