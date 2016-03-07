@@ -18,8 +18,40 @@ export default class App extends React.Component {
 	}
 
 	render() {
-		return <div className='row'>
-			<div className='col-xs-12'>
+
+		return <div style={{
+			fontFamily: '"Lato","Helvetica Neue",Helvetica,Arial,sans-serif',
+			fontSize: 15,
+			lineHeight: 1.42857143,
+			color: "#ffffff",
+			backgroundColor: "#222222",
+			position: 'fixed',
+			width: '100%',
+			height: '400px',
+			bottom: 0,
+			boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.06), 0 2px 6px 0 rgba(0, 0, 0, 0.26)'
+		}}>
+			<div className='col-xs-12' style={{
+				width: '100%',
+				float: 'left',
+				position: 'relative',
+				minHeight: 1,
+				paddingLeft: 15,
+				paddingRight: 15
+			}}>
+			<span onClick={this.props.hideApp} style={{
+				float: 'right',
+				cursor: 'pointer',
+				backgroundColor: 'rgba(255, 255, 255, 0.05)',
+				textAlign: 'center',
+				verticalAlign: 'middle',
+				padding: '4px 12px 4px 12px',
+				borderRadius: 2,
+				lineHeight: '1.75',
+				fontWeight: '600',
+				position: 'relative',
+				top: 12
+			}}>x</span>
 				<h1 style={{marginBottom: 20}}>sofe inspector</h1>
 				<ServiceList
 					services={this.state.services}

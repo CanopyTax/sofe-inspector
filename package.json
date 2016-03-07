@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --optimize-minimize && rm app/dist/main.js.map",
-    "watch": "webpack -w"
+    "watch": "webpack -w",
+		"dist": "npm run build && zip -r sofe-inspector.zip app"
   },
   "repository": {
     "type": "git",
