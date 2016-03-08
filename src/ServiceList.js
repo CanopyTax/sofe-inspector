@@ -27,5 +27,5 @@ export default function ServiceList({services, updateService, deleteService}) {
 }
 
 function getBlankMessage() {
-	return <p style={{padding: 15, background: 'rgba(52, 152, 219, .5)'}} className="text-center">You do not have any loaded sofe services</p>
+	return <p style={{padding: 15, background: 'rgba(52, 152, 219, .5)', textAlign: 'center'}}>You do not have any loaded sofe services</p>
 }
