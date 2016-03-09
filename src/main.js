@@ -4,8 +4,6 @@ import ReactDOM from 'react-dom';
 import App from './App.js';
 import Notification from './Notification.js';
 
-export default boot;
-
 class Root extends React.Component {
 	constructor(props) {
 		super(props);
@@ -35,7 +33,6 @@ class Root extends React.Component {
 	}
 }
 
-
 function boot() {
 	let wrapper = document.createElement('div');
 	wrapper.id = 'sofe-inspector';
@@ -44,3 +41,5 @@ function boot() {
 
 	ReactDOM.render(<Root />, document.getElementById('sofe-inspector'));
 }
+
+module.exports = boot;

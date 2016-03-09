@@ -8,7 +8,9 @@ module.exports = {
     },
     output: {
 				path: path.join(__dirname, "dist"),
-        filename: "sofe-inspector-" + version + ".js"
+        filename: "sofe-inspector-" + version + ".js",
+        libraryTarget: "commonjs2",
+        library: "boot"
     },
 		module: {
 			loaders: [
