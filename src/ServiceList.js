@@ -1,23 +1,25 @@
 import React from 'react';
+import formStyles from './Form.style.css';
+import buttonStyles from './Button.style.css';
 
 export default function ServiceList({services, updateService, deleteService}) {
-	return (services && services.length) ? <table className="table table-bordered">
+	return (services && services.length) ? <table className={formStyles.table}>
 		<thead>
 			<tr className='row'>
-				<th className='col-xs-2'>Service Name</th>
-				<th className='col-xs-10'>SRC</th>
+				<th style={{width: '20%'}} className='col-xs-2'>Service Name</th>
+				<th style={{width: '80%'}} className='col-xs-10'>SRC</th>
 			</tr>
 		</thead>
 		<tbody>
 			{services.map((service) => {
-				return <tr className='row' key={service.name}>
-				<th className='col-xs-2'><input value={service.name} disabled className="form-control" /></th>
-				<td className='col-xs-9'>
+				return <tr style={{verticalAlign: 'top'}} className='row' key={service.name}>
+				<td style={{padding: 8}} className='col-xs-2'><input value={service.name} disabled className={formStyles.formControl} /></td>
+				<td style={{padding: 8}} className='col-xs-9'>
 					<div style={{width: 'calc(100% - 40px)', display: 'inline-block'}}>
-						<input onChange={updateService.bind(null, service.name)} value={service.src} className="form-control" />
+						<input onChange={updateService.bind(null, service.name)} value={service.src} className={formStyles.formControl} />
 					</div>
-					<div style={{width: 40, verticalAlign: 'top', display: 'inline-block'}}>
-						<button onClick={deleteService.bind(null, service.name)} style={{position: 'relative', top: 10, right: 10}} type="button" className="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<div style={{width: 40, verticalAlign: 'top', display: 'inline-block', position: 'relative', top: -3}}>
+						<span onClick={deleteService.bind(null, service.name)} className={buttonStyles.closeButton}>x</span>
 					</div>
 				</td>
 			</tr>

@@ -2,7 +2,7 @@ import React from 'react';
 import ServiceList from './ServiceList.js';
 import Dialog from './Dialog.js';
 import { getServices, updateService, removeService } from './ServiceResource.js';
-import { closeButton, button as buttonStyle, buttonPrimary } from './styles.js';
+import styles from './Button.style.css';
 
 export default class App extends React.Component {
 	constructor(props) {
@@ -40,14 +40,14 @@ export default class App extends React.Component {
 				paddingLeft: 15,
 				paddingRight: 15
 			}}>
-				<span onClick={this.props.hideApp} style={closeButton}>x</span>
+				<span onClick={this.props.hideApp} className={styles.closeButton}>x</span>
 				<h1 style={{marginBottom: 20}}>sofe inspector</h1>
 				<ServiceList
 					services={this.state.services}
 					updateService={this.updateService.bind(this)}
 					deleteService={this.deleteService.bind(this)} />
 				<div style={{float: 'right'}}>
-					<button onClick={this.showDialog.bind(this)} style={{...buttonStyle, ...buttonPrimary}}>Add a Service</button>
+					<button onClick={this.showDialog.bind(this)} className={`${styles.btn} ${styles.btnPrimary}`}>Add a Service</button>
 				</div>
 				<Dialog
 					show={this.state.dialog}
