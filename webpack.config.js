@@ -1,4 +1,5 @@
 var path = require("path");
+var version = require('./package.json').version;
 
 module.exports = {
     entry: {
