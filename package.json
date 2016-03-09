@@ -25,7 +25,7 @@
     "redux": "^3.3.1"
   },
   "sofe": {
-    "url": "https://cors-anywhere.herokuapp.com/https://sofe-inspector.surge.sh/sofe-inspector-1.0.3.js"
+    "url": "https://cors-anywhere.herokuapp.com/https://sofe-inspector.surge.sh/sofe-inspector-1.1.0.js"
   },
   "devDependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.6.5",
