@@ -4,10 +4,7 @@ import ReactDOM from 'react-dom';
 import App from './App.js';
 import Notification from './Notification.js';
 
-let wrapper = document.createElement('div');
-wrapper.id = 'sofe-inspector';
-
-document.body.appendChild(wrapper);
+export default boot;
 
 class Root extends React.Component {
 	constructor(props) {
@@ -38,4 +35,12 @@ class Root extends React.Component {
 	}
 }
 
-ReactDOM.render(<Root />, document.getElementById('sofe-inspector'));
+
+function boot() {
+	let wrapper = document.createElement('div');
+	wrapper.id = 'sofe-inspector';
+
+	document.body.appendChild(wrapper);
+
+	ReactDOM.render(<Root />, document.getElementById('sofe-inspector'));
+}
