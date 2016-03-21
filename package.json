@@ -1,13 +1,15 @@
 {
   "name": "sofe-inspector",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "An extension for the Chrome Developer Tools for managing sofe services",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --optimize-minimize && rm app/dist/main.js.map",
     "watch": "webpack -w",
-    "dist": "npm run build && zip -r sofe-inspector.zip app"
+    "dist": "webpack --config webpack.config.prod.js",
+		"deploy": "surge dist",
+		"clean": "rm dist/*"
   },
   "repository": {
     "type": "git",
@@ -25,7 +27,7 @@
     "redux": "^3.3.1"
   },
   "sofe": {
-    "url": "https://cors-anywhere.herokuapp.com/https://sofe-inspector.surge.sh/sofe-inspector-1.1.0.js"
+    "url": "https://cors-anywhere.herokuapp.com/https://sofe-inspector.surge.sh/sofe-inspector-1.1.1.js"
   },
   "devDependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.6.5",
