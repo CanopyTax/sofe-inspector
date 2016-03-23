@@ -62,3 +62,8 @@
 	position: relative;
 	top: 12;
 }
+
+:local(.link) {
+	color: #4A90E2;
+	text-decoration: none;
+}

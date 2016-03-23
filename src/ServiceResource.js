@@ -1,3 +1,5 @@
+import 'whatwg-fetch';
+
 const _getServices = `
 	(function() {
 		'use strict';
@@ -41,7 +43,6 @@ export function updateService(name, src) {
 		localStorage.setItem(`sofe:${name}`, src);
 		resolve();
 	})
-	
 }
 
 export function removeService(name) {
@@ -49,4 +50,40 @@ export function removeService(name) {
 		localStorage.removeItem((`sofe:${name}`));
 		resolve();
 	})
+}
+
+export function getAvailableServices() {
+	const sofe = (System && System.sofe) || {};
+
+	return new Promise((resolve, reject) => {
+		if (sofe.manifestUrl) {
+			buildManifest(sofe.manifestUrl)
+				.then(manifest => resolve({
+					...manifest,
+					...(sofe.manifest || {})
+				}))
+				.catch(reject);
+		} else {
+			resolve(sofe.manifest || {});
+		}
+	});
+}
+
+function buildManifest(url, manifest) {
+	return new Promise((resolve, reject) => {
+		fetch(url)
+			.then(resp => resp.json())
+			.then(json => {
+				const extendedManifest = {
+					...manifest,
+					...(json.sofe.manifest || {})
+				};
+
+				if (json.sofe.manifestUrl) {
+					buildManifest(json.sofe.manifestUrl, extendedManifest).then(resolve).catch(reject);
+				} else {
+					resolve(extendedManifest)
+				}
+			})
+	});
 }

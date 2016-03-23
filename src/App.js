@@ -1,7 +1,7 @@
 import React from 'react';
 import ServiceList from './ServiceList.js';
 import Dialog from './Dialog.js';
-import { getServices, updateService, removeService } from './ServiceResource.js';
+import { getServices, updateService, removeService, getAvailableServices } from './ServiceResource.js';
 import styles from './Button.style.css';
 
 export default class App extends React.Component {
@@ -16,6 +16,15 @@ export default class App extends React.Component {
 
 	componentWillMount() {
 		this.refreshServices();
+
+		getAvailableServices()
+			.then((services) => {
+				window.sofeServices = services;
+				this.setState({
+					availableServices: services
+				});
+			})
+			.catch(console.error.bind(console))
 	}
 
 	render() {
@@ -51,6 +60,7 @@ export default class App extends React.Component {
 					<button onClick={this.showDialog.bind(this)} className={`${styles.btn} ${styles.btnPrimary}`}>Add a Service</button>
 				</div>
 				<Dialog
+					availableServices={this.state.availableServices}
 					show={this.state.dialog}
 					closeDialog={this.closeDialog.bind(this)}
 					addService={this.addService.bind(this)} />

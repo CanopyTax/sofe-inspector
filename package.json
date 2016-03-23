@@ -8,8 +8,8 @@
     "build": "webpack --optimize-minimize && rm app/dist/main.js.map",
     "watch": "webpack -w",
     "dist": "webpack --config webpack.config.prod.js",
-		"deploy": "surge dist",
-		"clean": "rm dist/*"
+    "deploy": "surge dist",
+    "clean": "rm dist/*"
   },
   "repository": {
     "type": "git",
@@ -24,12 +24,14 @@
   "dependencies": {
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
-    "redux": "^3.3.1"
+    "redux": "^3.3.1",
+    "whatwg-fetch": "^0.11.0"
   },
   "sofe": {
     "url": "https://cors-anywhere.herokuapp.com/https://sofe-inspector.surge.sh/sofe-inspector-1.1.1.js"
   },
   "devDependencies": {
+    "babel-loader": "^6.2.4",
     "babel-plugin-transform-object-rest-spread": "^6.6.5",
     "babel-preset-es2015": "^6.5.0",
     "babel-preset-react": "^6.5.0",
