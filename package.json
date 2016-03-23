@@ -2,7 +2,7 @@
   "name": "sofe-inspector",
   "version": "1.2.1",
   "description": "An extension for the Chrome Developer Tools for managing sofe services",
-  "main": "dist/sofe-inspector-1.2.1.js",
+  "main": "dist/sofe-inspector-1.2.2.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --optimize-minimize && rm app/dist/main.js.map",
@@ -28,7 +28,7 @@
     "whatwg-fetch": "^0.11.0"
   },
   "sofe": {
-    "url": "https://npmcdn.com/sofe-inspector@1.2.1/dist/sofe-inspector-1.2.1.js"
+    "url": "https://npmcdn.com/sofe-inspector@1.2.2/dist/sofe-inspector-1.2.2.js"
   },
   "devDependencies": {
     "babel-loader": "^6.2.4",
@@ -39,5 +39,9 @@
     "postcss-loader": "^0.8.1",
     "style-loader": "^0.13.0",
     "webpack": "^2.0.6-beta"
-  }
+  },
+  "files": [
+    "dist",
+    "src"
+  ]
 }
