@@ -28,7 +28,7 @@
     "whatwg-fetch": "^0.11.0"
   },
   "sofe": {
-    "url": "https://cors-anywhere.herokuapp.com/https://sofe-inspector.surge.sh/sofe-inspector-1.1.1.js"
+    "url": "https://cors-anywhere.herokuapp.com/https://sofe-inspector.surge.sh/sofe-inspector-1.2.0.js"
   },
   "devDependencies": {
     "babel-loader": "^6.2.4",
