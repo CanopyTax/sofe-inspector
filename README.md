@@ -1,4 +1,6 @@
 # sofe-inspector
-An extension for the Chrome Developer Tools for managing sofe services 
+A developer tool for overriding and viewing available sofe services.
 
-Available on the Chrome Web Store: https://chrome.google.com/webstore/detail/sofeinspector/nhgngdfmamoldklniodpmoippjefmllm
+## Setup
+1. [Setup sofe](https://github.com/CanopyTax/sofe)
+2. Either programaticaly, or within your console: `System.import('sofe-inspector!sofe', inspector => inspector())`
