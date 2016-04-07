@@ -13,11 +13,22 @@ class Root extends React.Component {
 	}
 
 	render() {
-		if (this.state.appDisplayed) {
-			return <App hideApp={this.hideApp.bind(this)} />;
-		} else {
-			return <Notification displayApp={this.showApp.bind(this)} />
-		}
+		// Doesn't hurt to show the notification even when the app is open, since it's z-index is smaller than App's
+		const notificationVisible = true;
+		return (
+			<div>
+				<App
+					hideApp={this.hideApp.bind(this)}
+					visible={this.state.appDisplayed}
+					{...this.props}
+				/>
+				<Notification
+					displayApp={this.showApp.bind(this)}
+					visible={notificationVisible}
+					{...this.props}
+				/>
+			</div>
+		);
 	}
 
 	showApp() {
@@ -33,13 +44,13 @@ class Root extends React.Component {
 	}
 }
 
-function boot() {
+function boot(props) {
 	let wrapper = document.createElement('div');
 	wrapper.id = 'sofe-inspector';
 
 	document.body.appendChild(wrapper);
 
-	ReactDOM.render(<Root />, document.getElementById('sofe-inspector'));
+	ReactDOM.render(<Root {...props} />, document.getElementById('sofe-inspector'));
 }
 
 module.exports = boot;
