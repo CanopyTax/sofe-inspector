@@ -40,6 +40,7 @@ export default class App extends React.Component {
 			width: '100%',
 			height: '400px',
 			bottom: 0,
+			left: 0,
 			zIndex: 1000001,
 			boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.06), 0 2px 6px 0 rgba(0, 0, 0, 0.26)'
 		}}>
