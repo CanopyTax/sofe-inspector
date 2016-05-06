@@ -20,6 +20,8 @@ const _getServices = `
 	})()
 `
 
+let lastServiceGuid = 0;
+
 export function getServices() {
 	return new Promise((resolve, reject) => {
 		let services = [];
@@ -29,7 +31,8 @@ export function getServices() {
 				services.push(
 					{
 						name: (/sofe:((\S)+)/g).exec(localStorage.key(i))[1],
-						src: localStorage.getItem(localStorage.key(i))
+						src: localStorage.getItem(localStorage.key(i)),
+						id: ++lastServiceGuid,
 					}
 				);
 			}

@@ -57,6 +57,7 @@ export default class App extends React.Component {
 				<ServiceList
 					services={this.state.services}
 					updateService={this.updateService.bind(this)}
+					renameService={this.renameService.bind(this)}
 					deleteService={this.deleteService.bind(this)} />
 				<div style={{float: 'right'}}>
 					<button onClick={this.showDialog.bind(this)} className={`${styles.btn} ${styles.btnPrimary}`}>Add a Service</button>
@@ -96,13 +97,34 @@ export default class App extends React.Component {
 			.catch(console.error.bind(console))
 	}
 
-	updateService(name, e) {
-		updateService(name, e.target.value)
-			.then(this.refreshServices.bind(this))
+	updateService(name, index, e) {
+		const url = e.target.value;
+		updateService(name, url)
+			.then(() => {
+				const newServices = [...this.state.services];
+				newServices[index].name = name;
+				newServices[index].src = url;
+				this.setState({services: newServices});
+			})
 			.catch(console.error.bind(console))
 	}
 
+	renameService(e, url, oldName, index) {
+		const newName = e.target.value;
+
+		removeService(oldName)
+		.then(() => updateService(newName, url))
+		.then(() => {
+			const newServices = [...this.state.services];
+			newServices[index].name = newName;
+			newServices[index].src = url;
+			this.setState({services: newServices});
+		})
+		.catch(console.error.bind(console))
+	}
+
 	refreshServices() {
+		// Whenever we do this, cursor position and focus of inputs is lost. So we only do it when removing/adding a service. Not when modifying.
 		getServices()
 			.then((services) => {
 				this.setState({ services })
