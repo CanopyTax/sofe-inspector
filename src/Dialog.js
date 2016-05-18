@@ -9,7 +9,14 @@ export default class Dialog extends React.Component {
 		this.state = {
 			name: '',
 			src: '',
+			serviceNameEl: null,
 			showAvailableServices: false
+		}
+	}
+
+	componentWillReceiveProps(nextProps) {
+		if (!this.props.show && nextProps.show && this.state.serviceNameEl) {
+			setTimeout(() => this.state.serviceNameEl.focus());
 		}
 	}
 
@@ -39,6 +46,7 @@ export default class Dialog extends React.Component {
 					<div className={formStyles.formGroup}>
 						<label className={formStyles.label}>Name</label>
 						<input
+							ref={el => el && !this.state.serviceNameEl && el !== this.state.serviceNameEl && this.setState({serviceNameEl: el})}
 							value={this.state.name}
 							onChange={this.updateData.bind(this, 'name')}
 							type="email"
@@ -49,6 +57,7 @@ export default class Dialog extends React.Component {
 						<label className={formStyles.label}>SRC</label>
 						<input
 							value={this.state.src}
+							onKeyUp={e => e && e.keyCode === 13 && this.addService.call(this)}
 							onChange={this.updateData.bind(this, 'src')}
 							type="email"
 							className={formStyles.formControl}
