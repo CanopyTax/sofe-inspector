@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+./node_modules/jspm/jspm.js build \
+	src/main.js \
+	- sofe \
+	dist/sofe-inspector.js \
+	--format amd \
+	"$@"

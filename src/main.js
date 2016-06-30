@@ -44,7 +44,7 @@ class Root extends React.Component {
 	}
 }
 
-function boot(props) {
+export default function boot(props) {
 	let wrapper = document.createElement('div');
 	wrapper.id = 'sofe-inspector';
 
@@ -52,5 +52,3 @@ function boot(props) {
 
 	ReactDOM.render(<Root {...props} />, document.getElementById('sofe-inspector'));
 }
-
-module.exports = boot;
