@@ -1,3 +1,4 @@
+import { getAllManifests } from 'sofe';
 import 'whatwg-fetch';
 
 const _getServices = `
@@ -26,7 +27,7 @@ export function getServices() {
 	return new Promise((resolve, reject) => {
 		let services = [];
 
-		for (var i = 0, iLength = localStorage.length; i < iLength; i++ ) {
+		for (let i = 0, iLength = localStorage.length; i < iLength; i++ ) {
 			if (localStorage.key(i).match(/sofe:(\S)+/g)) {
 				services.push(
 					{
@@ -59,34 +60,10 @@ export function getAvailableServices() {
 	const sofe = (System && System.sofe) || {};
 
 	return new Promise((resolve, reject) => {
-		if (sofe.manifestUrl) {
-			buildManifest(sofe.manifestUrl)
-				.then(manifest => resolve({
-					...manifest,
-					...(sofe.manifest || {})
-				}))
-				.catch(reject);
-		} else {
-			resolve(sofe.manifest || {});
-		}
-	});
-}
-
-function buildManifest(url, manifest) {
-	return new Promise((resolve, reject) => {
-		fetch(url)
-			.then(resp => resp.json())
-			.then(json => {
-				const extendedManifest = {
-					...manifest,
-					...(json.sofe.manifest || {})
-				};
-
-				if (json.sofe.manifestUrl) {
-					buildManifest(json.sofe.manifestUrl, extendedManifest).then(resolve).catch(reject);
-				} else {
-					resolve(extendedManifest)
-				}
+		getAllManifests()
+			.then(manifests => {
+				resolve(manifests.flat || {});
 			})
+			.catch(reject);
 	});
 }

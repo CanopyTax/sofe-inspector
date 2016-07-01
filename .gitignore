@@ -29,3 +29,5 @@ node_modules
 app/dist
 
 dist
+
+jspm_packages
