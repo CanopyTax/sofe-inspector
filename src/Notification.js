@@ -16,6 +16,7 @@ export default class Notification extends React.Component {
 			iconPositionTop,
 			iconPositionLeft,
 			resizeListener: null,
+			dragging: false,
 		}
 
 		function iconPositionTopFromProp(top = window.innerHeight) {
@@ -64,10 +65,10 @@ export default class Notification extends React.Component {
 		return (
 			<DraggableCore
 				onDrag={this.onDrag.bind(this)}
-				onStop={this.onStop}
+				onStop={this.onStop.bind(this)}
 			>
 				<img
-					onClick={this.props.displayApp}
+					onClick={this.showApp.bind(this)}
 					draggable={false}
 					style={{
 						display: this.props.visible ? 'initial' : 'none',
@@ -84,17 +85,36 @@ export default class Notification extends React.Component {
 		);
 	}
 
+	showApp() {
+		if (!this.state.dragging) {
+			this.props.displayApp();
+		}
+	}
+
 	onDrag(e, {position}) {
+		e.stopPropagation();
+		e.stopImmediatePropagation();
+
+		const clientX = position ? position.clientX : e.clientX;
+		const clientY = position ? position.clientY : e.clientY;
+
 		this.setState({
-			iconPositionTop: position.clientY,
-			iconPositionLeft: position.clientX,
+			iconPositionTop: clientY,
+			iconPositionLeft: clientX,
+			dragging: true,
 		});
 
-		window.localStorage.setItem('sofe-inspector:iconPositionTop', position.clientY);
-		window.localStorage.setItem('sofe-inspector:iconPositionLeft', position.clientX);
+		window.localStorage.setItem('sofe-inspector:iconPositionTop', clientY);
+		window.localStorage.setItem('sofe-inspector:iconPositionLeft', clientX);
 	}
 
 	onStop(e) {
+		setTimeout(() => {
+			this.setState({
+				dragging: false,
+			});
+		});
+
 		e.stopPropagation();
 		e.stopImmediatePropagation();
 		e.preventDefault();
