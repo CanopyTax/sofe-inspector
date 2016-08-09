@@ -2,7 +2,7 @@
   "name": "sofe-inspector",
   "version": "2.0.1",
   "description": "An extension for the Chrome Developer Tools for managing sofe services",
-  "main": "main.js",
+  "main": "dist/sofe-inspector.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "./bin/build -w",
@@ -28,7 +28,7 @@
     "whatwg-fetch": "^0.11.0"
   },
   "sofe": {
-    "url": "https://npmcdn.com/sofe-inspector@2.0.1/dist/sofe-inspector.js"
+    "url": "https://npmcdn.com/sofe-inspector@2.0.2/dist/sofe-inspector.js"
   },
   "devDependencies": {
     "babel-loader": "^6.2.4",
