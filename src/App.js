@@ -30,7 +30,7 @@ export default class App extends React.Component {
 	render() {
 
 		return <div style={{
-			display: this.props.visible ? 'initial' : 'none',
+			display: this.props.visible ? 'block' : 'none',
 			fontFamily: '"Lato","Helvetica Neue",Helvetica,Arial,sans-serif',
 			fontSize: 15,
 			lineHeight: 1.42857143,

@@ -15,7 +15,10 @@ SystemJS.config({
   },
   devConfig: {
     "map": {
-      "plugin-babel": "npm:systemjs-plugin-babel@0.0.12"
+      "plugin-babel": "npm:systemjs-plugin-babel@0.0.12",
+      "core-js": "npm:core-js@1.2.6",
+      "babel-runtime": "npm:babel-runtime@5.8.38",
+      "babel": "npm:babel-core@5.8.38"
     }
   },
   transpiler: "plugin-babel",
@@ -36,7 +39,50 @@ SystemJS.config({
           "loader": "jspm-loader-css"
         }
       }
-    },
+    }
+  },
+  map: {
+    "jspm-loader-css": "github:MeoMix/jspm-loader-css@master"
+  }
+});
+
+SystemJS.config({
+  packageConfigPaths: [
+    "npm:@*/*.json",
+    "npm:*.json",
+    "github:*/*.json"
+  ],
+  map: {
+    "MeoMix/jspm-loader-css": "github:MeoMix/jspm-loader-css@master",
+    "assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
+    "babel-preset-react": "npm:babel-preset-react@6.11.1",
+    "babel-preset-stage-1": "npm:babel-preset-stage-1@6.5.0",
+    "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
+    "child_process": "github:jspm/nodelibs-child_process@0.2.0-alpha",
+    "constants": "github:jspm/nodelibs-constants@0.2.0-alpha",
+    "crypto": "github:jspm/nodelibs-crypto@0.2.0-alpha",
+    "domain": "github:jspm/nodelibs-domain@0.2.0-alpha",
+    "events": "github:jspm/nodelibs-events@0.2.0-alpha",
+    "fs": "github:jspm/nodelibs-fs@0.2.0-alpha",
+    "http": "github:jspm/nodelibs-http@0.2.0-alpha",
+    "https": "github:jspm/nodelibs-https@0.2.0-alpha",
+    "path": "github:jspm/nodelibs-path@0.2.0-alpha",
+    "process": "github:jspm/nodelibs-process@0.2.0-alpha",
+    "punycode": "github:jspm/nodelibs-punycode@0.2.0-alpha",
+    "react": "npm:react@15.1.0",
+    "react-dom": "npm:react-dom@15.1.0",
+    "react-draggable": "npm:react-draggable@2.1.2",
+    "redux": "npm:redux@3.5.2",
+    "sofe": "npm:sofe@1.4.1",
+    "stream": "github:jspm/nodelibs-stream@0.2.0-alpha",
+    "string_decoder": "github:jspm/nodelibs-string_decoder@0.2.0-alpha",
+    "url": "github:jspm/nodelibs-url@0.2.0-alpha",
+    "util": "github:jspm/nodelibs-util@0.2.0-alpha",
+    "vm": "github:jspm/nodelibs-vm@0.2.0-alpha",
+    "whatwg-fetch": "npm:whatwg-fetch@1.0.0",
+    "zlib": "github:jspm/nodelibs-zlib@0.2.0-alpha"
+  },
+  packages: {
     "github:MeoMix/jspm-loader-css@master": {
       "map": {
         "css-modules-loader-core": "npm:css-modules-loader-core@1.0.0",
@@ -410,49 +456,7 @@ SystemJS.config({
       "map": {
         "chalk": "npm:chalk@1.1.3"
       }
-    }
-  },
-  map: {
-    "jspm-loader-css": "github:MeoMix/jspm-loader-css@master"
-  }
-});
-
-SystemJS.config({
-  packageConfigPaths: [
-    "npm:@*/*.json",
-    "npm:*.json",
-    "github:*/*.json"
-  ],
-  map: {
-    "assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
-    "babel-preset-react": "npm:babel-preset-react@6.11.1",
-    "babel-preset-stage-1": "npm:babel-preset-stage-1@6.5.0",
-    "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
-    "child_process": "github:jspm/nodelibs-child_process@0.2.0-alpha",
-    "constants": "github:jspm/nodelibs-constants@0.2.0-alpha",
-    "crypto": "github:jspm/nodelibs-crypto@0.2.0-alpha",
-    "domain": "github:jspm/nodelibs-domain@0.2.0-alpha",
-    "events": "github:jspm/nodelibs-events@0.2.0-alpha",
-    "fs": "github:jspm/nodelibs-fs@0.2.0-alpha",
-    "http": "github:jspm/nodelibs-http@0.2.0-alpha",
-    "https": "github:jspm/nodelibs-https@0.2.0-alpha",
-    "path": "github:jspm/nodelibs-path@0.2.0-alpha",
-    "process": "github:jspm/nodelibs-process@0.2.0-alpha",
-    "punycode": "github:jspm/nodelibs-punycode@0.2.0-alpha",
-    "react": "npm:react@15.1.0",
-    "react-dom": "npm:react-dom@15.1.0",
-    "react-draggable": "npm:react-draggable@2.1.2",
-    "redux": "npm:redux@3.5.2",
-    "sofe": "npm:sofe@1.4.1",
-    "stream": "github:jspm/nodelibs-stream@0.2.0-alpha",
-    "string_decoder": "github:jspm/nodelibs-string_decoder@0.2.0-alpha",
-    "url": "github:jspm/nodelibs-url@0.2.0-alpha",
-    "util": "github:jspm/nodelibs-util@0.2.0-alpha",
-    "vm": "github:jspm/nodelibs-vm@0.2.0-alpha",
-    "whatwg-fetch": "npm:whatwg-fetch@1.0.0",
-    "zlib": "github:jspm/nodelibs-zlib@0.2.0-alpha"
-  },
-  packages: {
+    },
     "github:jspm/nodelibs-buffer@0.2.0-alpha": {
       "map": {
         "buffer-browserify": "npm:buffer@4.7.0"
