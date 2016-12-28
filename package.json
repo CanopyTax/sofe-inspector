@@ -1,6 +1,6 @@
 {
   "name": "sofe-inspector",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "An extension for the Chrome Developer Tools for managing sofe services",
   "main": "dist/sofe-inspector.js",
   "scripts": {
