@@ -5,7 +5,7 @@
   "main": "dist/sofe-inspector.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "./bin/build -w",
+    "watch": "./bin/build -dw",
     "build": "./bin/build",
     "pre-commit": "npm run build",
     "deploy": "surge dist",
@@ -51,10 +51,12 @@
       "MeoMix/jspm-loader-css": "github:MeoMix/jspm-loader-css@master",
       "babel-preset-react": "npm:babel-preset-react@^6.11.1",
       "babel-preset-stage-1": "npm:babel-preset-stage-1@^6.5.0",
-      "react-dom": "npm:react-dom@^15.1.0",
+      "css": "github:systemjs/plugin-css@^0.1.32",
+      "react-dom": "npm:react-dom@^15.4.1",
       "react-draggable": "npm:react-draggable@^2.1.2",
       "redux": "npm:redux@^3.5.2",
       "sofe": "npm:sofe@^1.4.1",
+      "vis": "npm:vis@^4.17.0",
       "whatwg-fetch": "npm:whatwg-fetch@^1.0.0"
     },
     "devDependencies": {
@@ -64,26 +66,26 @@
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.12"
     },
     "peerDependencies": {
-      "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
-      "buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha",
-      "child_process": "github:jspm/nodelibs-child_process@^0.2.0-alpha",
-      "constants": "github:jspm/nodelibs-constants@^0.2.0-alpha",
-      "crypto": "github:jspm/nodelibs-crypto@^0.2.0-alpha",
-      "domain": "github:jspm/nodelibs-domain@^0.2.0-alpha",
-      "events": "github:jspm/nodelibs-events@^0.2.0-alpha",
-      "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
-      "http": "github:jspm/nodelibs-http@^0.2.0-alpha",
-      "https": "github:jspm/nodelibs-https@^0.2.0-alpha",
-      "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
-      "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
-      "punycode": "github:jspm/nodelibs-punycode@^0.2.0-alpha",
-      "react": "npm:react@^15.1.0",
-      "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
-      "string_decoder": "github:jspm/nodelibs-string_decoder@^0.2.0-alpha",
-      "url": "github:jspm/nodelibs-url@^0.2.0-alpha",
-      "util": "github:jspm/nodelibs-util@^0.2.0-alpha",
-      "vm": "github:jspm/nodelibs-vm@^0.2.0-alpha",
-      "zlib": "github:jspm/nodelibs-zlib@^0.2.0-alpha"
+      "assert": "npm:jspm-nodelibs-assert@^0.2.0",
+      "buffer": "npm:jspm-nodelibs-buffer@^0.2.0",
+      "child_process": "npm:jspm-nodelibs-child_process@^0.2.0",
+      "constants": "npm:jspm-nodelibs-constants@^0.2.0",
+      "crypto": "npm:jspm-nodelibs-crypto@^0.2.0",
+      "domain": "npm:jspm-nodelibs-domain@^0.2.0",
+      "events": "npm:jspm-nodelibs-events@^0.2.0",
+      "fs": "npm:jspm-nodelibs-fs@^0.2.0",
+      "http": "npm:jspm-nodelibs-http@^0.2.0",
+      "https": "npm:jspm-nodelibs-https@^0.2.0",
+      "path": "npm:jspm-nodelibs-path@^0.2.0",
+      "process": "npm:jspm-nodelibs-process@^0.2.0",
+      "punycode": "npm:jspm-nodelibs-punycode@^0.2.0",
+      "react": "npm:react@^15.4.1",
+      "stream": "npm:jspm-nodelibs-stream@^0.2.0",
+      "string_decoder": "npm:jspm-nodelibs-string_decoder@^0.2.0",
+      "url": "npm:jspm-nodelibs-url@^0.2.0",
+      "util": "npm:jspm-nodelibs-util@^0.2.0",
+      "vm": "npm:jspm-nodelibs-vm@^0.2.0",
+      "zlib": "npm:jspm-nodelibs-zlib@^0.2.0"
     },
     "overrides": {
       "npm:babel-core@5.8.38": {
@@ -143,6 +145,9 @@
           "buffer": "@empty",
           "process": "@empty"
         }
+      },
+      "npm:moment@2.17.1": {
+        "jspmNodeConversion": false
       },
       "npm:ms@0.7.1": {
         "jspmNodeConversion": false,
