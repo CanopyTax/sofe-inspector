@@ -1,6 +1,7 @@
 import React from 'react';
 import ServiceList from './ServiceList.js';
 import Dialog from './Dialog.js';
+import VisualizeDependencies from './VisualizeDependencies.js';
 import { getServices, updateService, removeService, getAvailableServices } from './ServiceResource.js';
 import styles from './Button.style.css';
 
@@ -10,7 +11,8 @@ export default class App extends React.Component {
 
 		this.state = {
 			dialog: false,
-			services: []
+			services: [],
+			visualizingDependencies: false,
 		}
 	}
 
@@ -60,6 +62,7 @@ export default class App extends React.Component {
 					renameService={this.renameService.bind(this)}
 					deleteService={this.deleteService.bind(this)} />
 				<div style={{float: 'right'}}>
+					<button onClick={() => this.setState({visualizingDependencies: true})} className={`${styles.btn} ${styles.btnDefault}`} style={{marginRight: '8px'}}>Visualize dependencies</button>
 					<button onClick={this.showDialog.bind(this)} className={`${styles.btn} ${styles.btnPrimary}`}>Add a Service</button>
 				</div>
 				<Dialog
@@ -67,6 +70,11 @@ export default class App extends React.Component {
 					show={this.state.dialog}
 					closeDialog={this.closeDialog.bind(this)}
 					addService={this.addService.bind(this)} />
+				{this.state.visualizingDependencies &&
+					<VisualizeDependencies
+						close={() => this.setState({visualizingDependencies: false})}
+					/>
+				}
 			</div>
 		</div>
 	}
