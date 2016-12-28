@@ -9,9 +9,16 @@ export default class VisualizeDependencies extends React.PureComponent {
 		this.state = {
 			nodes: null,
 			edges: null,
+			errMessage: null,
 		};
 	}
 	componentDidMount() {
+		if (!SystemJS.getConfig().trace) {
+			this.setState({errMessage: `Visualizing the sofe dependencies requires SystemJS.config({trace: true}). Please set that before loading any sofe services so that all dependencies will be traced.
+				If you work at Canopy, try again after running localStorage.setItem('common-deps', true) and reloading the page`});
+			return;
+		}
+
 		SystemJS.import('sofe')
 		.then(sofe => sofe.getAllManifests())
 		.then(manifests => {
@@ -102,6 +109,11 @@ export default class VisualizeDependencies extends React.PureComponent {
 					<a onClick={this.props.close}>
 						Close visualization
 					</a>
+					{this.state.errMessage &&
+						<div className={styles.err}>
+							{this.state.errMessage}
+						</div>
+					}
 				</div>
 				<div className={styles.visualization} ref={el => this.el = el} />
 			</div>

@@ -23,3 +23,11 @@
 	height: 100%;
 	width: 100%;
 }
+
+.err {
+	margin-top: 32px;
+	width: 50%;
+	font-size: 24px;
+	color: red;
+	text-align: center;
+}
