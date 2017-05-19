@@ -97,7 +97,7 @@ export default class Dialog extends React.Component {
 			<div className={styles.modalBody} style={{
 				height: '200px',
 				overflow: 'auto'}} >
-				{Object.keys(availableServices).map((serviceName) => <div>
+				{Object.keys(availableServices).sort().map((serviceName) => <div key={serviceName}>
 					<a className={buttonStyles.link} onClick={
 						this.overrideAvailabeService.bind(this, serviceName, availableServices[serviceName])
 					}>{serviceName}</a>
