@@ -1,6 +1,6 @@
 import React from 'react';
 import vis from 'vis';
-import 'vis/dist/vis.css!css';
+import 'vis/dist/vis.css';
 import styles from './VisualizeDependencies.style.css';
 
 export default class VisualizeDependencies extends React.PureComponent {
