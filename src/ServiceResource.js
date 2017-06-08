@@ -1,5 +1,4 @@
 import { getAllManifests } from 'sofe';
-import 'whatwg-fetch';
 
 const _getServices = `
 	(function() {
