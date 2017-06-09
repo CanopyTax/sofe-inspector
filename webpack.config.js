@@ -7,6 +7,7 @@ module.exports = {
 	entry: path.resolve(__dirname, './src/main.js'),
 	output: {
 		filename: 'sofe-inspector.js',
+		library: 'sofe-inspector',
 		libraryTarget: 'amd',
 		path: __dirname + '/dist',
 	},
