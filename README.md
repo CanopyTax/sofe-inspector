@@ -15,5 +15,21 @@ Also, you can provide an `opts` object to the inspector, with the following opti
 {
 	iconPositionTop: Number, // an integer number of pixels that will be used for the default top position (before dragging occurs)
 	iconPositionLeft: Number, // an integer number of pixels that will be used for the default left position (before dragging occurs)
+	middleware: Middleware // An object to provide middleware hooks for defining service overrides.
+}
+```
+
+## Middleware
+An example middleware object:
+```
+{
+	update: (name, src) => {
+		console.log(name, src); // do something with the name and src
+		return Promise.resolve();
+	},
+	remove: (name) => {
+		console.log(name); // do something with the name
+		return Promise.resolve();
+	}
 }
 ```

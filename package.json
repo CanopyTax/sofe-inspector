@@ -5,6 +5,7 @@
   "main": "dist/sofe-inspector.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server dist --cors -c-1 --ssl --cert public.pem --key key.pem -p",
     "build": "webpack --config webpack.config.js -p",
     "watch": "webpack --config webpack.config.js -w",
     "pre-commit": "npm run build",
@@ -42,6 +43,7 @@
     "babel-preset-stage-1": "^6.24.1",
     "css-loader": "^0.28.4",
     "file-loader": "^0.11.2",
+    "http-server": "^0.10.0",
     "postcss-loader": "^2.0.5",
     "react-draggable": "^2.2.6",
     "style-loader": "^0.18.2",

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { setMiddleWare } from './ServiceResource.js';
 
 import App from './App.js';
 import Notification from './Notification.js';
@@ -47,6 +48,8 @@ class Root extends React.Component {
 export default function boot(props) {
 	let wrapper = document.createElement('div');
 	wrapper.id = 'sofe-inspector';
+
+	if (props.middleware) setMiddleWare(props.middleware);
 
 	document.body.appendChild(wrapper);
 
