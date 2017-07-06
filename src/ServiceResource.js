@@ -44,6 +44,7 @@ export function getServices() {
 export function updateService(name, src) {
 	return new Promise((resolve, reject) => {
 		localStorage.setItem(`sofe:${name}`, src);
+		document.cookie = `sofe:${name}=${src}`;
 		resolve();
 	})
 }
@@ -51,6 +52,7 @@ export function updateService(name, src) {
 export function removeService(name) {
 	return new Promise((resolve, reject) => {
 		localStorage.removeItem((`sofe:${name}`));
+		document.cookie = `sofe:${name}=; Expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
 		resolve();
 	})
 }
