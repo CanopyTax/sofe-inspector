@@ -13,7 +13,7 @@ export default class VisualizeDependencies extends React.PureComponent {
 		};
 	}
 	componentDidMount() {
-		if (!SystemJS.getConfig().trace) {
+		if (!SystemJS.trace) {
 			this.setState({errMessage: `Visualizing the sofe dependencies requires SystemJS.config({trace: true}). Please set that before loading any sofe services so that all dependencies will be traced.
 				If you work at Canopy, try again after running localStorage.setItem('common-deps', true) and reloading the page`});
 			return;
@@ -28,13 +28,14 @@ export default class VisualizeDependencies extends React.PureComponent {
 					return {normalized: normalizedServiceName, name: Object.keys(manifests.flat)[index]};
 				}))
 		})
+		.then(services => new Promise(resolve => setTimeout(() => resolve(services))))
 		.then(services => {
 			const edges = services.reduce((edges, service) => {
 				if (!SystemJS.loads[service.normalized]) {
 					// This sofe service has no dependencies
 					return edges;
 				} else {
-					return edges.concat(SystemJS.loads[service.normalized].deps.map(dep => {
+					return edges.concat((SystemJS.loads[service.normalized].deps || []).map(dep => {
 						const to = dep.indexOf('!') >= 0 ? dep.slice(0, dep.indexOf('!')) : dep;
 						return {
 							from: service.name,
